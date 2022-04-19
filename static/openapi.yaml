@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Norway Scraper
+  description: Running a Flask application from a Docker container to get information about the visa application center and its news
+  version: 2.0.0
+servers:
+  - url: https://www.norway.no/ru/belarus/-/
+    description: Source for getting information
+paths:
+  /contacts:
+    get:
+      tags:
+        - Visa Centres
+      description: getting information about the visa application center
+      responses: 
+        '200':
+          description: "succsesful getting contacts"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    Adress:
+                      type: string
+                      example: Независимости 25
+                    Phone:
+                      type: string
+                      example: +375441597859
+                    Email:
+                      type: string
+                      example: example@gmail.com
+
+  /news:
+    get:
+      tags:
+        - Visa Centres news
+      description: getting information about the visa application center
+      responses: 
+        '200':
+          description: "succsesful getting news"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    Header:
+                      type: string
+                      example: Important information to...
+                    New:
+                      type: string
+                      example: Embassy in Moscow regrets to inform that it is not (from 9.3.22) possible to...
+                    
